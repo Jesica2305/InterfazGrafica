@@ -15,6 +15,12 @@ public class IngresarPersona extends JFrame{
     private JButton btnGuardar;
     private JLabel lblIdioma;
     private JComboBox cmbIdioma;
+    private JCheckBox chbTerminos;
+    private JLabel lblGenero;
+    private JRadioButton rbtMasculino;
+    private JRadioButton rbtFemenino;
+    private JRadioButton rbtOtro;
+    private JRadioButton rbtNoIndicado;
 
     public IngresarPersona(){
         this.setContentPane(pnlPrincipal);
@@ -30,12 +36,19 @@ public class IngresarPersona extends JFrame{
                 String nombre = txtNombre.getText();
                 String apellido = txtApellido.getText();
                 String idioma = cmbIdioma.getSelectedItem().toString();
+                String aceptoTerminos = (chbTerminos.isSelected() == true) ? "Si" : "No";
+                String genero = (rbtMasculino.isSelected())? "Masculino":
+                                (rbtFemenino.isSelected()) ? "Femenino":
+                                (rbtOtro.isSelected()) ? "Otro":
+                                        (rbtNoIndicado.isSelected())? "No indicado": "";
 
                 String mensaje = "Tus datos son: " + "\n" +
                                  "Código: " + codigo + "\n" +
                                  "Nombre: " + nombre + "\n" +
                                  "Apellido: " + apellido + "\n" +
-                                 "idioma: " + idioma;
+                                 "Idioma: " + idioma + "\n" +
+                                 "Género: " + genero + "\n" +
+                                 "Acepto terminos: " + aceptoTerminos;
 
                 JOptionPane.showMessageDialog(btnGuardar, mensaje);
             }
